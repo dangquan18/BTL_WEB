@@ -19,9 +19,9 @@ const searchRooms = (capacity, districtId, searchDate, startTime, endTime) => {
         AND rooms.district_id = ?
         AND rooms.id NOT IN (
             SELECT room_id
-            FROM bookings
+            FROM bookings 
             WHERE
-                date = ? AND
+                date = ? AND status NOT LIKE 'cancelled' AND
                 (
                     (start_time < ? AND end_time > ?) -- Giao đầu
                     OR
